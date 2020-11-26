@@ -240,5 +240,19 @@ ggplot(alle_wg, aes( x = Gruppe_Tag, y = summe )) +
 ```
 
 
+hier die deutlich bessere Lösung mit facet_wrap, ohne den Aufwand subsets zu erstellen
+
+```{r}
+
+alle_wg <- group_by(alle_wg, Warengruppe)
+
+ggplot(alle_wg, aes(x = wochentag, y = summe )) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  facet_wrap(~Warengruppe)
+
+
+```
+
 
 
